@@ -1,7 +1,5 @@
 package br.com.luciano.ecommerce;
 
-import br.com.luciano.ecommerce.KafkaDispatcher;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
