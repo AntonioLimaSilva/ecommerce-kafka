@@ -1,7 +1,6 @@
 package br.com.luciano.ecommerce;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +28,7 @@ public class EmailService {
         LOGGER.info("########====================##########");
         LOGGER.info("Send mail");
         LOGGER.info("Key: {}", record.key());
-        LOGGER.info("Value: {}", record.value());
+        LOGGER.info("Value: {}", record.value().toString());
         LOGGER.info("Partition: {}", record.partition());
 
         try {
