@@ -29,9 +29,8 @@ public class CreateUserService {
         LOGGER.info("------------------------------------------");
         LOGGER.info("Processing new order, checking for new user");
         LOGGER.info("{}",record.value());
-        var order = record.value();
 
-        this.verifyIfExistToCreate(order);
+        this.verifyIfExistToCreate(record.value());
     }
 
     private void verifyIfExistToCreate(Order order) {
