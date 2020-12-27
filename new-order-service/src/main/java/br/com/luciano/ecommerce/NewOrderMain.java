@@ -12,13 +12,13 @@ public class NewOrderMain {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         try (var orderKafkaDispatcher = new KafkaDispatcher<Order>()) {
             try (var emailKafkaDispatcher = new KafkaDispatcher<Email>()) {
-                var email = new Email("Thank you for your order! We are proposing your order.");
+                var subject = new Email("Thank you for your order! We are proposing your order.");
                 for (var i = 0; i < 10; i++) {
-                    var userId = UUID.randomUUID().toString();
-                    var order = new Order(UUID.randomUUID().toString(), userId, BigDecimal.valueOf(Math.random() * 5000 + 1));
-                    orderKafkaDispatcher.send(TOPIC_ORDER, userId, order);
+                    var email = Math.random() + "@gmail.com";
+                    var order = new Order(UUID.randomUUID().toString(), BigDecimal.valueOf(Math.random() * 5000 + 1), email);
+                    orderKafkaDispatcher.send(TOPIC_ORDER, email, order);
 
-                    emailKafkaDispatcher.send(TOPIC_EMAIL, userId, email);
+                    emailKafkaDispatcher.send(TOPIC_EMAIL, email, subject);
                 }
             }
         }

@@ -1,10 +1,7 @@
 package br.com.luciano.ecommerce;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.math.BigDecimal;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
 
     private String id;
@@ -29,6 +26,10 @@ public class Order {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

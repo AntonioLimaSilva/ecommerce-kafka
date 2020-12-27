@@ -43,9 +43,9 @@ public class FraudDetectorService {
         if (record.value().getAmount().compareTo(new BigDecimal("4000")) >= 0) {
             LOGGER.info("Order is a fraud!!! {}", record.value());
 
-            kafkaDispatcher.send(TOPIC_REJECTED, record.value().getUserId(), record.value());
+            kafkaDispatcher.send(TOPIC_REJECTED, record.value().getEmail(), record.value());
         } else {
-            kafkaDispatcher.send(TOPIC_APPROVED, record.value().getUserId(), record.value());
+            kafkaDispatcher.send(TOPIC_APPROVED, record.value().getEmail(), record.value());
             LOGGER.info("Approved: {} ", record.value());
         }
     }
