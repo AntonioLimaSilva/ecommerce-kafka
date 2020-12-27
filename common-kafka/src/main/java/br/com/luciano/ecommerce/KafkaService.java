@@ -42,7 +42,13 @@ public class KafkaService<T> implements Closeable {
 
             if (!records.isEmpty()) {
                 LOGGER.info("Found {} records", records.count());
-                records.forEach(consumerFunction::consumer);
+                records.forEach(record -> {
+                    try {
+                        consumerFunction.consumer(record);
+                    } catch (Exception e) {
+                        LOGGER.error("Error: ", e);
+                    }
+                });
             }
         }
     }

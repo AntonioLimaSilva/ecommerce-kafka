@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.Closeable;
 import java.util.Properties;
-import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class KafkaDispatcher<T> implements Closeable {
@@ -22,8 +21,8 @@ public class KafkaDispatcher<T> implements Closeable {
         this.producer = new KafkaProducer<>(properties());
     }
 
-    public void send(String topic, T value) throws ExecutionException, InterruptedException {
-        var producerRecordOrder = new ProducerRecord<>(topic, UUID.randomUUID().toString(), value);
+    public void send(String topic, String key, T value) throws ExecutionException, InterruptedException {
+        var producerRecordOrder = new ProducerRecord<>(topic, key, value);
         producer.send(producerRecordOrder, getCallback()).get();
     }
 
