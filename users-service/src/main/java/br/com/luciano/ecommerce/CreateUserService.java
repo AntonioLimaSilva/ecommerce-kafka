@@ -34,14 +34,14 @@ public class CreateUserService {
     }
 
     private void verifyIfExistToCreate(Order order) {
-        try (var userService = new UserService()) {
-            var userEntityOptional = userService.findByUuid(order.getEmail());
+        try (var userRepository = new UserRepository()) {
+            var userEntityOptional = userRepository.findByUuid(order.getEmail());
 
             if (userEntityOptional.isEmpty()) {
                 UserEntity newUserEntity = new UserEntity();
                 newUserEntity.setEmail(order.getEmail());
                 newUserEntity.setUuid(UUID.randomUUID().toString());
-                userService.create(newUserEntity);
+                userRepository.create(newUserEntity);
 
                 LOGGER.info("Insert new {} ", newUserEntity);
             }

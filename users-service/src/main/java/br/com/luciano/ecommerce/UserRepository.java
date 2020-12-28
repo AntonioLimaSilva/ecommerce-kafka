@@ -7,14 +7,14 @@ import javax.persistence.Persistence;
 import java.io.Closeable;
 import java.util.Optional;
 
-public class UserService implements Closeable {
+public class UserRepository implements Closeable {
 
     private static final String PERSISTENCE_UNIT = "Ecommerce-PU";
 
     private final EntityManagerFactory entityManagerFactory;
     private final EntityManager entityManager;
 
-    public UserService() {
+    public UserRepository() {
         this.entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
         this.entityManager = entityManagerFactory.createEntityManager();
     }
