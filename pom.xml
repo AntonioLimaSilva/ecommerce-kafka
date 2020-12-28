@@ -20,6 +20,7 @@
         <module>email-service</module>
         <module>common-kafka</module>
         <module>users-service</module>
+        <module>http-service</module>
     </modules>
 
     <dependencies>

@@ -10,7 +10,7 @@ public class EmailService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
 
-    private static final String TOPIC = "ECOMMERCE_NEW_EMAIL";
+    private static final String TOPIC = "ECOMMERCE_SEND_EMAIL";
 
     public static void main(String[] args) {
         var emailService = new EmailService();

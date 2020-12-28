@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 public class NewOrderMain {
 
     private static final String TOPIC_ORDER = "ECOMMERCE_NEW_ORDER";
-    private static final String TOPIC_EMAIL = "ECOMMERCE_NEW_EMAIL";
+    private static final String TOPIC_EMAIL = "ECOMMERCE_SEND_EMAIL";
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         try (var orderKafkaDispatcher = new KafkaDispatcher<Order>()) {

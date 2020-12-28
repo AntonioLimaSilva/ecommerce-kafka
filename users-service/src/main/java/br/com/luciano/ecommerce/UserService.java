@@ -9,11 +9,13 @@ import java.util.Optional;
 
 public class UserService implements Closeable {
 
+    private static final String PERSISTENCE_UNIT = "Ecommerce-PU";
+
     private final EntityManagerFactory entityManagerFactory;
     private final EntityManager entityManager;
 
     public UserService() {
-        this.entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
+        this.entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
         this.entityManager = entityManagerFactory.createEntityManager();
     }
 
